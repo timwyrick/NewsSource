@@ -1,0 +1,28 @@
+﻿@page "/"
+@using NewsSource.Client.Components
+@inject HttpClient Http
+
+@if (articles != null)
+{
+<div class="container-fluid">
+    <NewsList @bind-Articles="articles"></NewsList>
+</div>
+
+}
+
+
+
+@code {
+    private IEnumerable<Article> articles;
+
+    private string header;
+
+    protected override async Task OnInitializedAsync()
+    {
+        header = await Http.GetFromJsonAsync<string>("news/headline");
+
+        articles = await Http.GetFromJsonAsync<IEnumerable<Article>>("news/top");
+
+        var blah = articles;
+    }
+}

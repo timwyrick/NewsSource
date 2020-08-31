@@ -1,0 +1,32 @@
+﻿<div class="col-sm-4 article border">
+    <div class="col-sm-12">
+        <a href="@Article.Url" target="_blank">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-7">@Article.Source.Name</div>
+                        <div class="col-sm-5">
+                            <div class="article-date">@Convert.ToDateTime(Article.PublishedAt).ToString("MM/dd/yyyy hh:mm tt")</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 article-image">
+                    @if (Article.UrlToImage != null)
+                    {
+                        <img src="@Article.UrlToImage" />
+                    }
+                    else
+                    {
+                        <img src="/images/noimageavailable.png" />
+                    }
+                </div>
+                <div class="col-sm-12 article-description">@Article.Title</div>
+            </div>
+        </a>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public NewsSource.Shared.Models.Article Article { get; set; }
+}

@@ -1,0 +1,16 @@
+﻿<div class="row">
+    @foreach (var article in Articles)
+    {
+        <NewsArticle Article="article"></NewsArticle>
+    }
+</div>
+
+
+@code {
+    [Parameter]
+    public IEnumerable<Article> Articles { get; set; }
+
+    [Parameter]
+    public EventCallback<IEnumerable<Article>> ArticlesChanged { get; set; }
+
+}
